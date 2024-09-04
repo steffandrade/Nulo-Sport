@@ -8,19 +8,17 @@ class TrainerModel {
 
     // Model para criar trainer
     public function createTrainer($name, $age, $height, $weight, $CPF, $RG) {
-        $sql = "INSERT INTO trainer (name, age, height, weight, CPF, RG, team) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO trainer (name, age, height, weight, CPF, RG) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
         
-        // Tenta executar a inserção e verifica se foi bem-sucedida
         if ($stmt->execute([$name, $age, $height, $weight, $CPF, $RG])) {
-            // Redireciona para "Trainer.php" se a inserção for bem-sucedida
             header('Location: Trainer.php');
             exit();
         } else {
-            // Exibe a mensagem de erro se a inserção falhar
             echo "Não foi possível criar esse Treinador no momento";
         }
     }
+    
     
 
 
